@@ -10,6 +10,14 @@ import handlers
 load_dotenv()
 
 TOKEN = os.getenv('BOT_TOKEN')
+OPEN_WEATHER_API_KEY = os.getenv('OPEN_WEATHER_API_KEY')
+EXCHANGERATES_API_KEY = os.getenv('EXCHANGERATES_API_KEY')
+
+bot = Bot(token=TOKEN)
+dp = Dispatcher()
+
+# Здесь хранятся id групповых чатов, в которые добален бот
+group_chats = {}
 
 
 async def main():
@@ -17,9 +25,6 @@ async def main():
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     )
-
-    bot = Bot(token=TOKEN)
-    dp = Dispatcher()
 
     dp.include_router(handlers.router)
 

@@ -6,6 +6,7 @@ from constants import (
     WEATHER_RETRY_BUTTON_TEXT,
     CONVERT_RETRY_BUTTON_TEXT
 )
+from bot import group_chats
 
 
 def get_menu_keyboard():
@@ -25,3 +26,10 @@ def get_retry_convert_keyboard():
     return ReplyKeyboardBuilder().add(
         KeyboardButton(text=CONVERT_RETRY_BUTTON_TEXT)
     )
+
+
+def get_choose_chat_keyboard():
+    builder = ReplyKeyboardBuilder()
+    for title in group_chats.keys():
+        builder.add(KeyboardButton(text=title))
+    return builder
